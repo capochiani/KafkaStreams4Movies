@@ -1,9 +1,8 @@
 # KafkaStreams4Movies
 
 
-========================================
 Kafka Streams for Movies.
-========================================
+
 In questo repository, vengono caricate 4 classi Java.
  
 StreamsCountMovieTopic.java (1) implementa una classe StreamsCountMovieTopic (Streams DSL) che legge dal
