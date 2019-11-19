@@ -1,8 +1,8 @@
 /**
- * Implementa una classe KStreamCountMovie.
+ * Implementa una classe KStreamsCountMovie.
  * Senza variabili esterne dichiarate.
  * 
- * Correlazione Classi: KStreamCountMovie & KStreamCountMovieVar
+ * Correlazione Classi: KStreamsCountMovie & KStreamsCountMovieVar
  * 
  */
 
