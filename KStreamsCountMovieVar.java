@@ -24,7 +24,7 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
-public class KStreamCountMovieVar {
+public class KStreamsCountMovieVar {
 	// var
 	public static final String INPUT_TOPIC = "/movie-stream:movie-input";
 	public static final String OUTPUT_TOPIC = "movie-output";
