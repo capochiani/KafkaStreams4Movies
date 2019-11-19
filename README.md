@@ -24,6 +24,6 @@ Note - da console:
    > stream topic create -path /movie-stream -topic movie-input 
     
  Per lanciare la classe KStreamsCountMovie:  
-    > java -cp "$(mapr clientclasspath):<Application Name>.jar" KStreamsCountMovie
+   > java -cp "$(mapr clientclasspath):<Application Name>.jar" KStreamsCountMovie
 
 Francesca
