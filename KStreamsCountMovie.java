@@ -24,7 +24,7 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
-public class KStreamCountMovie {
+public class KStreamsCountMovie {
 
 	public static void main(String[] args) {
 		Properties props = new Properties();
