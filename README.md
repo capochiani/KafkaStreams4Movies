@@ -5,7 +5,7 @@ Kafka Streams for Movies.
 
 In questo repository, vengono caricate 4 classi Java.
  
-StreamCountMovieTopic.java (1) implementa una classe StreamsCountMovieTopic (Streams DSL) che legge dal
+StreamCountMovieTopic.java (1) implementa una classe StreamCountMovieTopic (Streams DSL) che legge dal
 topic "streams-movie-input" i cui valori del messaggio rappresentano linee di testo e 
 splitta ogni linea in parole per poi scriverle in un sink topic "streams-countmovieTopic-output".
  
