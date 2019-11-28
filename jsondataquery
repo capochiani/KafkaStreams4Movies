@@ -1,0 +1,69 @@
+==============================
+Using JSON Data with KSQL
+==============================
+
+First of all. Create movielog.json:
+
+{
+  "user": {
+    "title_movie": "Il signore degli anelli",
+    "director_movie": "Peter Jackson",
+    "date": "2001"
+  },
+  "ip_address": "255.255.255.0",
+  "log-date": "2019-11-22T22:45:11Z"
+}
+
+Than, in KSQL, register the movielog stream like this:
+
+ksql> CREATE STREAM movielog \
+      (user STRUCT<\
+            title_movie VARCHAR, \
+            director_movie VARCHAR, \
+            date VARCHAR>, \
+       ip_address VARCHAR, \
+       log-date VARCHAR) \
+WITH (KAFKA_TOPIC='movielog', VALUE_FORMAT='JSON');
+
+ Message
+----------------
+ Stream created
+----------------
+
+So, access column:
+
+ksql> SELECT user->title_movie AS TITOLO FILM, \
+            user->last_name AS REGISTA, \
+            user->email AS DATA USCITA, \
+            ip_address, \
+            log-date \
+        FROM movielog;
+        
+Il signore degli anelli | Peter Jackson | 2001 | 255.255.255.0 | 2019-11-22T22:45:11Z
+
+    
+Build a new K-Topic:
+ksql> CREATE STREAM movielog_all AS \
+        SELECT user->title_movie AS TITOLO FILM, \
+               user->director_movie AS REGISTA, \
+               user->date AS DATA USCITA, \
+               ip_address, \
+               log-date \
+                FROM movielog;
+
+
+Finally, create Stream:
+
+ksql> CREATE TABLE movieid
+    WITH (PARTITIONS=5) AS
+    SELECT * FROM movielog
+    EMIT CHANGES;
+           
+ksql> CREATE STREAM movielog_all
+      WITH (TIMESTAMP='viewtime', PARTITIONS=3, VALUE_FORMAT='JSON') AS
+ 		 SELECT title_movie, director_movie, date,
+         TIMESTAMPTOSTRING(viewtime, 'yyyy-MM-dd HH:mm:ss.SSS') AS timestring
+ 	 FROM movielog
+     WHERE movieid<>'Movie_ID' AND movieid2<>'Movie_ID2'
+  	 PARTITION BY movieid
+ 	 EMIT CHANGES;
