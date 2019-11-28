@@ -56,7 +56,7 @@ ksql> CREATE STREAM movielog_all AS \
 Finally, create Stream:
 
 ksql> CREATE TABLE movieid
-    WITH (PARTITIONS=5) AS
+    WITH (PARTITIONS=3) AS
     SELECT * FROM movielog
     EMIT CHANGES;
            
