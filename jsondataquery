@@ -1,6 +1,7 @@
-==============================
+==================================================
 Using JSON Data with KSQL
-==============================
+Use/build with KSQL into a specific enviroment
+==================================================
 
 First of all. Create movielog.json:
 
